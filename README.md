@@ -2,4 +2,16 @@ Bogosort implementations in different languages. Honestly the only reason for th
 
 I have decided that array randomisation, generation and checking for order are to be implemented, so no built-in functions.
 
-Currently implemented: Python
+The program must time itself to the millisecond.
+
+Sorted array is printed only if starting array is defined.
+
+Each bogosort implementation must be able to run with the following command line arguments:
+	-l length, how long of a list is used. default 10.
+	-m max, biggest number allowed in the list. default 255.
+	-c count, how many times the bogosort is run. default 1.
+	-v , verbose, print individual times as well and some additional stats.
+	-a values..., values used to specify an array to sort. overrides -c and -v.
+
+Currently implemented:
+- Python, still need command line arguments and timing.

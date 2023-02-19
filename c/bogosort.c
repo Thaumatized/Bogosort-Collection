@@ -5,6 +5,7 @@
 int bogosort();
 int shuffle();
 int issorted();
+void RandomArray();
 
 int bogosort(int Arr[], int Len)
 {
@@ -36,6 +37,14 @@ int issorted(int Arr[], int Len)
 	return 1;
 }
 
+void RandomArray(int *Arr, int Len, int Max)
+{
+	for (int i = 0; i < Len; i++)
+	{
+		Arr[i] = rand() % Max;
+	}
+}
+
 int main()
 {
 	//Rand init
@@ -45,7 +54,8 @@ int main()
 	int Len = 5;
 	int Max = 255;
 	
-	int Arr[5] = {0, 7, 4, 21, 9};
+	int Arr[Len];
+	RandomArray(Arr, Len, Max);
 	
 	for(int i = 0; i < Len; i++){printf("%i", Arr[i]); printf(", ");}
 	printf("\n");

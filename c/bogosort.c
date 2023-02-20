@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <stdbool.h>
+#include <string.h>
 
 int bogosort();
 int shuffle();
@@ -45,7 +47,7 @@ void RandomArray(int *Arr, int Len, int Max)
 	}
 }
 
-int main()
+int main(int argc, char *argv[])
 {
 	//Rand init
 	time_t t = time(NULL);
@@ -53,9 +55,28 @@ int main()
 	
 	int Len = 5;
 	int Max = 255;
-	
-	int Arr[Len];
-	RandomArray(Arr, Len, Max);
+	bool Verbose = false;
+	int Arr[0];
+	bool ArrSet = false;
+
+	for (int i = 1; i < argc; i++)
+	{
+		printf(argv[i]);
+		printf("\n");
+		if (strcmp(argv[i], "-c"))
+		{
+			Len = atoi(argv[i]);
+			i++;
+		}
+	}
+	printf("%i", Max);
+	printf("\n");
+
+	if(!ArrSet)
+	{
+		int Arr[Len];
+		RandomArray(Arr, Len, Max);
+	}
 	
 	for(int i = 0; i < Len; i++){printf("%i", Arr[i]); printf(", ");}
 	printf("\n");

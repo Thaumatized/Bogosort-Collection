@@ -15,3 +15,9 @@ Each bogosort implementation must be able to run with the following command line
 
 Currently implemented:  
 - Python
+
+Partially implemented:
+- C
+	todo:
+	Command line arguments
+	Timing

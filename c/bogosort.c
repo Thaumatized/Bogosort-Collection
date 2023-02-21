@@ -4,21 +4,20 @@
 #include <stdbool.h>
 #include <string.h>
 
-int bogosort();
-int shuffle();
+void bogosort();
+void shuffle();
 int issorted();
 void RandomArray();
 
-int bogosort(int Arr[], int Len)
+void bogosort(int Arr[], int Len)
 {
 	while(issorted(Arr, Len) == 0)
 	{
 		shuffle(Arr, Len);
 	}
-	return 0;
 }
 
-int shuffle(int Arr[], int Len)
+void shuffle(int Arr[], int Len)
 {
 	for(int i = 0; i < Len; i++)
 	{
@@ -27,7 +26,6 @@ int shuffle(int Arr[], int Len)
 		Arr[OtherIndex] = Arr[i];
 		Arr[i] = Holder;
 	}
-	return 0;
 }
 
 int issorted(int Arr[], int Len)
@@ -39,11 +37,11 @@ int issorted(int Arr[], int Len)
 	return 1;
 }
 
-void RandomArray(int *Arr, int Len, int Max)
+void RandomArray(int Arr[], int Len, int Max)
 {
 	for (int i = 0; i < Len; i++)
 	{
-		Arr[i] = rand() % Max;
+		Arr[i] = rand() % (Max + 1);
 	}
 }
 
@@ -56,34 +54,47 @@ int main(int argc, char *argv[])
 	int Len = 5;
 	int Max = 255;
 	bool Verbose = false;
-	int Arr[0];
 	bool ArrSet = false;
 
 	for (int i = 1; i < argc; i++)
 	{
-		printf(argv[i]);
+		printf("%s", argv[i]);
 		printf("\n");
-		if (strcmp(argv[i], "-c"))
+		if (!strcmp(argv[i], "-c"))
 		{
-			Len = atoi(argv[i]);
+			Len = atoi(argv[i+1]);
+			i++;
+		}
+		if (!strcmp(argv[i], "-m"))
+		{
+			Max = atoi(argv[i+1]);
 			i++;
 		}
 	}
 	printf("%i", Max);
 	printf("\n");
+	
+	int Arr[Len];
 
 	if(!ArrSet)
 	{
-		int Arr[Len];
 		RandomArray(Arr, Len, Max);
 	}
 	
-	for(int i = 0; i < Len; i++){printf("%i", Arr[i]); printf(", ");}
+	for(int i = 0; i < Len; i++)
+	{
+		if(i) printf(", ");
+		printf("%i", Arr[i]);
+	}
 	printf("\n");
 	
 	bogosort(Arr, Len);
 	
-	for(int i = 0; i < Len; i++){printf("%i", Arr[i]); printf(", ");}
+	for(int i = 0; i < Len; i++)
+	{
+		if(i) printf(", ");
+		printf("%i", Arr[i]);
+	}
 	printf("\n");
 	
 	return 0;

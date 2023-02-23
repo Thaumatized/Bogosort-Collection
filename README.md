@@ -11,7 +11,7 @@ Each bogosort implementation must be able to run with the following command line
 	-m max, biggest number allowed in the list. default 255.  
 	-c count, how many times the bogosort is run. default 1.  
 	-v , verbose, print individual times as well and some additional stats.  
-	-a values..., values used to specify an array to sort. overrides -c and -v.  
+	-a values..., values used to specify an array to sort. overrides all others.  
 
 Currently implemented:  
 - Python  

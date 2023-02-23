@@ -20,4 +20,6 @@ Partially implemented:
 - C
 	todo:
 	Command line arguments
+		-v
+		-c
 	Timing

@@ -74,7 +74,10 @@ int main(int argc, char *argv[])
 	{
 		if (!strcmp(argv[i], "-l"))
 		{
-			Len = atoi(argv[i+1]);
+			if(!ArrArgIndex)
+			{
+				Len = atoi(argv[i+1]);
+			}
 			i++;
 		}
 		if (!strcmp(argv[i], "-m"))

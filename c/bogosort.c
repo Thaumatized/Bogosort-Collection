@@ -40,8 +40,6 @@ int issorted(int* Arr, int Len)
 
 void RandomArray(int* Arr, int Len, int Max)
 {
-	int temparr[Len];
-	Arr = &temparr[0];
 	for (int i = 0; i < Len; i++)
 	{
 		*(Arr + i) = rand() % (Max + 1);
@@ -68,7 +66,7 @@ int main(int argc, char *argv[])
 	int Max = 255;
 	int Count = 1;
 	bool Verbose = false;
-	bool ArrSet = false;
+	int ArrArgIndex = 0;
 	
 	int* Arr;
 
@@ -95,40 +93,36 @@ int main(int argc, char *argv[])
 		}
 		if (!strcmp(argv[i], "-a"))
 		{
+			//i2 = argument index to insert into the array
 			int i2 = i+1;
-			printf("\n");
 			while((i2 < argc) && (atoi(argv[i2]) || !strcmp("0", argv[i2])))
 			{
-				printf("%s", argv[i2]);
 				i2++;
 			}
 			Len = i2 - i - 1;
-			int TempArr[Len];
-			Arr = &(TempArr[0]);
-			i2 = i+1;
-			int i3 = 0;
-			while(i2 < argc && (atoi(argv[i2]) || !strcmp("0", argv[i2])))
-			{
-				*(Arr + i3) = atoi(argv[i2]);
-				i2++;
-				i3++;
-			}
-			ArrSet = true;
+			if(Len > 0) ArrArgIndex = i + 1;
 		}
 	}
 
-	if(!ArrSet)
+	int temparr[Len];
+	if(ArrArgIndex)
 	{
+		for (int i = 0; i < Len; i++)
+		{
+			Arr[i] = atoi(argv[ArrArgIndex+i]);
+		}
+	}
+	else
+	{
+		Arr = &(temparr[0]);
 		RandomArray(Arr, Len, Max);
 	}
 	
 	PrintArray(Arr, Len);
-	/*
 	
 	bogosort(Arr, Len);
 	
 	PrintArray(Arr, Len);
-	*/
 	
 	return 0;
 }

@@ -2,7 +2,7 @@ Bogosort implementations in different languages. Honestly the only reason for th
   
 I have decided that array randomisation, generation and checking for order are to be implemented, so no built-in functions.  
   
-The program must time itself to the millisecond.  
+The program must time itself to the millisecond, if array is not defined.  
   
 Sorted array is printed only if starting array is defined.  
   

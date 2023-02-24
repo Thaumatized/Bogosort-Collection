@@ -108,24 +108,59 @@ int main(int argc, char *argv[])
 	}
 
 	int temparr[Len];
+	Arr = &(temparr[0]);
+	float IndividualTimes[Count];
 	if(ArrArgIndex)
 	{
 		for (int i = 0; i < Len; i++)
 		{
 			Arr[i] = atoi(argv[ArrArgIndex+i]);
 		}
+		
+		PrintArray(Arr, Len);
+		
+		bogosort(Arr, Len);
+		
+		PrintArray(Arr, Len);
 	}
 	else
 	{
-		Arr = &(temparr[0]);
-		RandomArray(Arr, Len, Max);
+		clock_t Start, Stop;
+		
+		Start = clock();
+		
+		for(int i = 0; i < Count; i++)
+		{
+			clock_t Start2, Stop2;
+			Start2 = clock();
+			
+			RandomArray(Arr, Len, Max);
+			
+			bogosort(Arr, Len);
+			
+			
+			if(Verbose)
+			{
+				Stop2 = clock();
+				printf("\n%i: %6.4f", i, (double)(Stop2 - Start2) / CLOCKS_PER_SEC);
+				IndividualTimes[i] = (double)(Stop2 - Start2) / CLOCKS_PER_SEC;
+			}
+		}
+		
+		Stop = clock();
+		
+		float average, sum = 0;
+		
+		for(int i = 0; i < Count; i++)
+		{
+			sum += IndividualTimes[i];
+		}
+		average = sum / Count;
+		
+		printf("\naverage time: %6.4f\n", average);
+		printf("\nsummed up time: %6.4f\n", sum);
+		printf("\ntotal time: %6.4f\n", (double)(Stop - Start) / CLOCKS_PER_SEC);
 	}
-	
-	PrintArray(Arr, Len);
-	
-	bogosort(Arr, Len);
-	
-	PrintArray(Arr, Len);
 	
 	return 0;
 }

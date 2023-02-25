@@ -23,9 +23,9 @@ void shuffle(int* Arr, int Len)
 	for(int i = 0; i < Len; i++)
 	{
 		int OtherIndex = rand() % Len;
-		int Holder = *(Arr + OtherIndex);
-		*(Arr + OtherIndex) = *(Arr + i);
-		*(Arr + i) = Holder;
+		int Holder = Arr[OtherIndex];
+		Arr[OtherIndex] = Arr[i];
+		Arr[i] = Holder;
 	}
 }
 
@@ -42,7 +42,7 @@ void RandomArray(int* Arr, int Len, int Max)
 {
 	for (int i = 0; i < Len; i++)
 	{
-		*(Arr + i) = rand() % (Max + 1);
+		Arr[i] = rand() % (Max + 1);
 	}
 }
 
@@ -51,7 +51,7 @@ void PrintArray(int* Arr, int Len)
 	for(int i = 0; i < Len; i++)
 	{
 		if(i) printf(", ");
-		printf("%i", *(Arr + i));
+		printf("%i", Arr[i]);
 	}
 	printf("\n");
 }
@@ -108,7 +108,7 @@ int main(int argc, char *argv[])
 	}
 
 	int temparr[Len];
-	Arr = &(temparr[0]);
+	Arr = temparr;
 	float IndividualTimes[Count];
 	if(ArrArgIndex)
 	{

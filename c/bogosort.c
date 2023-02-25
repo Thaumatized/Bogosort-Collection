@@ -142,7 +142,7 @@ int main(int argc, char *argv[])
 			if(Verbose)
 			{
 				Stop2 = clock();
-				printf("\n%i: %6.4f", i, (double)(Stop2 - Start2) / CLOCKS_PER_SEC);
+				printf("\n%i: %6.3f", i, (double)(Stop2 - Start2) / CLOCKS_PER_SEC);
 				IndividualTimes[i] = (double)(Stop2 - Start2) / CLOCKS_PER_SEC;
 			}
 		}
@@ -157,11 +157,10 @@ int main(int argc, char *argv[])
 		}
 		average = sum / Count;
 		
-		printf("\naverage time: %6.4f\n", average);
-		printf("\nsummed up time: %6.4f\n", sum);
-		printf("\ntotal time: %6.4f\n", (double)(Stop - Start) / CLOCKS_PER_SEC);
+		printf("\naverage time: %6.3f\n", average);
+		printf("\nsummed up time: %6.3f\n", sum);
+		printf("\ntotal time: %6.3f\n", (double)(Stop - Start) / CLOCKS_PER_SEC);
 	}
 	
 	return 0;
 }
-

@@ -53,7 +53,6 @@ void PrintArray(int* Arr, int Len)
 		if(i) printf(", ");
 		printf("%i", Arr[i]);
 	}
-	printf("\n");
 }
 
 int main(int argc, char *argv[])
@@ -116,9 +115,7 @@ int main(int argc, char *argv[])
 		{
 			Arr[i] = atoi(argv[ArrArgIndex+i]);
 		}
-		
-		PrintArray(Arr, Len);
-		
+
 		bogosort(Arr, Len);
 		
 		PrintArray(Arr, Len);

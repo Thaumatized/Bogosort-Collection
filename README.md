@@ -15,11 +15,11 @@ Each bogosort implementation must be able to run with the following command line
 
 Currently implemented:  
 - Python  
-  
-Partially implemented:  
-- C  
-	todo:  
-	Command line arguments  
-		-v  
-		-c  
-	Timing  
+- C
+
+Partially implemented:
+- JS
+	- No command line, can use included html
+	- todo:
+		- All code lol
+		- included html

@@ -29,6 +29,13 @@ function IsSorted(Arr){
 	return true
 };
 
-function RandomArray(Len, Max){return [1, 2, 3, 4, 0]};
+function RandomArray(Len = 5, Max = 255){
+	var Arr = [];
+	for(var i = 0; i < Len; i++)
+	{
+		Arr.push(Math.floor(Math.random() * Max + 1));
+	}
+	return Arr;
+};
 
 function PrintArray(Arr){};

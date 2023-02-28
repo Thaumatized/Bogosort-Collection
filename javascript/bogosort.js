@@ -15,7 +15,7 @@ function Shuffle(Arr){
 		Arr[i] = Arr[OtherIndex];
 		Arr[OtherIndex] = Holder;
 	}
-	return Arr
+	return Arr;
 };
 
 function IsSorted(Arr){
@@ -23,10 +23,10 @@ function IsSorted(Arr){
 	{
 		if(Arr[i] > Arr[i+1])
 		{
-		return false
+			return false;
 		}
 	}
-	return true
+	return true;
 };
 
 function RandomArray(Len = 5, Max = 255){
@@ -37,5 +37,3 @@ function RandomArray(Len = 5, Max = 255){
 	}
 	return Arr;
 };
-
-function PrintArray(Arr){};

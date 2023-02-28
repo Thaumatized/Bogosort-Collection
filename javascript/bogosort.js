@@ -18,7 +18,16 @@ function Shuffle(Arr){
 	return Arr
 };
 
-function IsSorted(Arr){return True};
+function IsSorted(Arr){
+	for(var i = 0; i < Arr.length - 1; i++)
+	{
+		if(Arr[i] > Arr[i+1])
+		{
+		return false
+		}
+	}
+	return true
+};
 
 function RandomArray(Len, Max){return [1, 2, 3, 4, 0]};
 

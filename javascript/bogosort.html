@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<head>
+	<script src="bogosort.js"></script>
+	<script>
+		function ParseInput()
+		{
+			var input = document.getElementById("Arr").value;
+			var result = [];
+			var temp = ""
+			for(var i = 0; i < input.length; i++)
+			{
+				if(input[i] == ",")
+				{
+					result.push(temp);
+					temp = "";
+				}
+				if("-.1234567890".indexOf(input[i]) != -1)
+				{
+					temp += input[i];
+				}
+			}
+			result.push(temp);
+			return result;
+		}
+	</script>
+</head>
+<body>
+	<h2>Bogosort!</h2>
+	<label for="Arr">Comma seperated starting list: </label>
+	<input type="text" id="Arr"></input></br>
+	<button onClick="document.getElementById('Output').innerHTML = Bogosort(ParseInput());">Sort</button>
+	<p>Output: <span id="Output">1, 2, 3</span></p>
+</body>

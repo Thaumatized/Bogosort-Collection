@@ -21,5 +21,5 @@ Partially implemented:
 - JS
 	- No command line, can use included html
 	- todo:
-		- All code lol
-		- included html
+		- Timing
+		- improve included html

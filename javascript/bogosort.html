@@ -22,6 +22,24 @@
 			result.push(temp);
 			return result;
 		}
+		
+		function Benchmark()
+		{
+			var Count = document.getElementById("Count").value;
+			var Len = document.getElementById("Len").value;
+			var Max = document.getElementById("Max").value;
+			var Verbose = document.getElementById("Verbose").value;
+			var Output = document.getElementById("BenchmarkOutput");
+			Output.innerHTML = "";
+		
+			var IndividualTimes = [];
+			for(var i = 0; i < Count; i++)
+			{
+				var Arr = RandomArray(Len, Max)
+				Arr = Bogosort(Arr);
+			}
+			Output.innerHTML = "Sorted";
+		}
 	</script>
 </head>
 <body>
@@ -30,4 +48,31 @@
 	<input type="text" id="Arr"></input></br>
 	<button onClick="document.getElementById('Output').innerHTML = Bogosort(ParseInput());">Sort</button>
 	<p>Output: <span id="Output">1, 2, 3</span></p>
+	<br>
+	<h2>Benchmark</h2>
+	<table>
+		<tr>
+			<th>Field</th>
+			<th>Value</th>
+		</tr>
+		<tr>
+			<td><label for="Count">Count: </label></td>
+			<td><input type="number" id="Count" value="1"></input></td>
+		</tr>
+		<tr>
+			<td><label for="Len">Length: </label></td>
+			<td><input type="number" id="Len" value="5"></input></td>
+		</tr>
+		<tr>
+			<td><label for="Max">Max Number: </label></td>
+			<td><input type="number" id="Max" value="255"></input></td>
+		</tr>
+		<tr>
+			<td><label for="Verbose">Verbose: </label></td>
+			<td><input type="checkbox" id="Verbose" value="false"></input></td>
+		</tr>
+	</table>
+	<br>
+	<button onClick="Benchmark();">Go!</button>
+	<p>Output: <span id="BenchmarkOutput">1, 2, 3</span></p>
 </body>

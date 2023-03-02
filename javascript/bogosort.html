@@ -30,15 +30,23 @@
 			var Max = document.getElementById("Max").value;
 			var Verbose = document.getElementById("Verbose").value;
 			var Output = document.getElementById("BenchmarkOutput");
-			Output.innerHTML = "";
+			Output.innerHTML = "<br>";
 		
+			var StartTime = Date.now();
 			var IndividualTimes = [];
 			for(var i = 0; i < Count; i++)
 			{
+				var IndividualStartTime = Date.now();
 				var Arr = RandomArray(Len, Max)
 				Arr = Bogosort(Arr);
+				if(Verbose)
+				{
+					IndividualTimes.push((Date.now() - IndividualStartTime)/1000)
+					Output.innerHTML += i + ": " + IndividualTimes[i] + "<br>";
+				}
 			}
-			Output.innerHTML = "Sorted";
+			var TotalTime = (Date.now() - StartTime)/1000
+			Output.innerHTML += "Total time: " + TotalTime;
 		}
 	</script>
 </head>

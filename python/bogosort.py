@@ -26,7 +26,7 @@ def RandArray(length = 10, maxvalue=255):
 	return arr
 	
 if __name__ == '__main__':
-	length = 10
+	length = 8
 	maxvalue = 255
 	count = 1
 	verbose = False

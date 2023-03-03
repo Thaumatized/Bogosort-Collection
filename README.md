@@ -14,5 +14,7 @@ Each bogosort implementation must be able to run with the following command line
 	-a values..., values used to specify an array to sort. overrides all others.  
 
 Currently implemented:  
-	- Python  
-	- C
+- Python  
+- C
+- JavaScript
+	- No command line, can use included html

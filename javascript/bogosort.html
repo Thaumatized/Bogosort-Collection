@@ -41,10 +41,21 @@
 				Arr = Bogosort(Arr);
 				if(Verbose)
 				{
-					IndividualTimes.push((Date.now() - IndividualStartTime)/1000)
+					IndividualTimes.push((Date.now() - IndividualStartTime))
 					Output.innerHTML += i + ": " + IndividualTimes[i] + "<br>";
 				}
 			}
+			if(Verbose)
+			{
+				var SummedUpTime = 0;
+				for(var i = 0; i < IndividualTimes.length; i++)
+				{
+					SummedUpTime += IndividualTimes[i];
+				}
+				Output.innerHTML += "Summed up time: " + SummedUpTime/1000 + "<br>";
+			}
+			
+			
 			var TotalTime = (Date.now() - StartTime)/1000
 			Output.innerHTML += "Total time: " + TotalTime;
 		}

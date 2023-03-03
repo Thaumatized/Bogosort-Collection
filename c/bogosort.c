@@ -61,7 +61,7 @@ int main(int argc, char *argv[])
 	time_t t = time(NULL);
 	srand(t);
 	
-	int Len = 10;
+	int Len = 8;
 	int Max = 255;
 	int Count = 1;
 	bool Verbose = false;

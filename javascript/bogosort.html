@@ -28,7 +28,7 @@
 			var Count = document.getElementById("Count").value;
 			var Len = document.getElementById("Len").value;
 			var Max = document.getElementById("Max").value;
-			var Verbose = document.getElementById("Verbose").value;
+			var Verbose = document.getElementById("Verbose").checked;
 			var Output = document.getElementById("BenchmarkOutput");
 			Output.innerHTML = "<br>";
 		
@@ -77,7 +77,7 @@
 		</tr>
 		<tr>
 			<td><label for="Verbose">Verbose: </label></td>
-			<td><input type="checkbox" id="Verbose" value="false"></input></td>
+			<td><input type="checkbox" id="Verbose"></input></td>
 		</tr>
 	</table>
 	<br>

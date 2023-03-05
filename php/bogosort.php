@@ -1,36 +1,43 @@
 <?php
-	echo("a");
 	$Arr = Bogosort([1, 2, 3, 0]);
+	var_dump($Arr);
 
+	//*
 	function Bogosort($Arr)
 	{
-		while !IsSorted($Arr)
+		while (!IsSorted($Arr))
 		{
-			Shuffle($Arr);
+			$Arr = ShuffleArray($Arr);
 		}
 		return $Arr;
 	}
+	//*/
 	
-	IsSorted($Arr)
+	//*
+	function IsSorted($Arr)
 	{
-		for($i =0; $i < length($Arr) - 1; $i++)
+		for($i = 0; $i < count($Arr) - 1; $i++)
 		{
-			if($Arr[i] > $Arr[i+1])
+			if($Arr[$i] > $Arr[$i+1])
 			{
 				return False;
 			}
 		}
 		return True;
 	}
+	//*/
 	
-	Shuffle($Arr)
+	//*
+	function ShuffleArray($Arr)
 	{
-		for($i =0; $i < length($Arr); $i++)
+		for($i = 0; $i < count($Arr); $i++)
 		{
-			if($Arr[i] > $Arr[i+1])
-			{
-				return False;
-			}
+			$OtherIndex = rand(0, count($Arr)-1);
+			$Holder = $Arr[$i];
+			$Arr[$i] = $Arr[$OtherIndex];
+			$Arr[$OtherIndex] = $Holder;
 		}
+		return $Arr;
 	}
+	//*/
 ?>

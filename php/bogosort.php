@@ -1,8 +1,6 @@
 <?php
-	$Arr = Bogosort([1, 2, 3, 0]);
-	var_dump($Arr);
+	Benchmark();
 
-	//*
 	function Bogosort($Arr)
 	{
 		while (!IsSorted($Arr))
@@ -11,9 +9,7 @@
 		}
 		return $Arr;
 	}
-	//*/
 	
-	//*
 	function IsSorted($Arr)
 	{
 		for($i = 0; $i < count($Arr) - 1; $i++)
@@ -25,9 +21,7 @@
 		}
 		return True;
 	}
-	//*/
 	
-	//*
 	function ShuffleArray($Arr)
 	{
 		for($i = 0; $i < count($Arr); $i++)
@@ -39,5 +33,12 @@
 		}
 		return $Arr;
 	}
-	//*/
+	
+	function Benchmark()
+	{
+		$start = floor(microtime(true) * 1000);
+		bogosort([1, 2, 3, 0]);
+		$end = floor(microtime(true) * 1000);
+		echo(($end - $start)/1000);
+	}
 ?>

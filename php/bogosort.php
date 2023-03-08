@@ -34,10 +34,20 @@
 		return $Arr;
 	}
 	
+	function RandomArray($Len, $Max)
+	{
+		$Arr = [];
+		for($i = 0; $i < $Len; $i++)
+		{
+			array_push($Arr, rand(0, $Max));
+		}
+		return $Arr;
+	}
+	
 	function Benchmark()
 	{
 		$start = floor(microtime(true) * 1000);
-		bogosort([1, 2, 3, 0]);
+		bogosort(RandomArray(10, 255));
 		$end = floor(microtime(true) * 1000);
 		echo(($end - $start)/1000);
 	}

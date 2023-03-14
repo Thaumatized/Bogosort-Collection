@@ -1,12 +1,18 @@
 <?php	
 	require 'bogosort.php';
 
+	$BenchmarkOutput = "Run the benchmark first!";
+	
+	Benchmark();
+
 	function Benchmark()
 	{
+		global $BenchmarkOutput;
+		
 		$start = floor(microtime(true) * 1000);
 		bogosort(RandomArray($_GET['Len'], $_GET['Max']));
 		$end = floor(microtime(true) * 1000);
-		echo(($end - $start)/1000);
+		$BenchmarkOutput = (($end - $start)/1000) ."s";
 	}
 ?>
 
@@ -46,6 +52,6 @@
 		</table>
 		<br>
 		<input type="submit"></submit>
-		<!-- <p>Output: <span id="BenchmarkOutput">1, 2, 3</span></p> -->
+		<p>Output: <span id="BenchmarkOutput"><?php echo($BenchmarkOutput) ?></span></p>
 	</form>
 </body>

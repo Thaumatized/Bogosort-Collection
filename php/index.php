@@ -10,8 +10,11 @@
 		global $BenchmarkOutput;
 		
 		$start = floor(microtime(true) * 1000);
-		bogosort(RandomArray($_GET['Len'], $_GET['Max']));
-		$end = floor(microtime(true) * 1000);
+		for($i = 0; $i < $_GET['Count']; $i++)
+		{
+			bogosort(RandomArray($_GET['Len'], $_GET['Max']));
+			$end = floor(microtime(true) * 1000);
+		}
 		$BenchmarkOutput = (($end - $start)/1000) ."s";
 	}
 ?>
@@ -33,10 +36,10 @@
 				<th>Field</th>
 				<th>Value</th>
 			</tr>
-			<!-- <tr>
+			<tr>
 				<td><label for="Count">Count: </label></td>
-				<td><input type="number" id="Count" value="1"></input></td>
-			</tr> -->
+				<td><input type="number" name="Count" id="Count" value="1"></input></td>
+			</tr> 
 			<tr>
 				<td><label for="Len">Length: </label></td>
 				<td><input type="number" name="Len" id="Len" value="8"></input></td>

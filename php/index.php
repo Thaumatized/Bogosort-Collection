@@ -8,14 +8,26 @@
 	function Benchmark()
 	{
 		global $BenchmarkOutput;
+		$BenchmarkOutput = "";
 		
-		$start = floor(microtime(true) * 1000);
+		$Verbose = $_GET['Verbose'] == "on";
+		
+		$Start = floor(microtime(true) * 1000);
 		for($i = 0; $i < $_GET['Count']; $i++)
 		{
+			if($Verbose)
+			{
+				$IndividualStart = floor(microtime(true) * 1000);
+			}
 			bogosort(RandomArray($_GET['Len'], $_GET['Max']));
-			$end = floor(microtime(true) * 1000);
+			if($Verbose)
+			{
+				$IndividualEnd = floor(microtime(true) * 1000);
+				$BenchmarkOutput .= $i .": " . (($IndividualEnd - $IndividualStart)/1000) ."s<br>";
+			}
 		}
-		$BenchmarkOutput = (($end - $start)/1000) ."s";
+		$End = floor(microtime(true) * 1000);
+		$BenchmarkOutput .= (($End - $Start)/1000) ."s";
 	}
 ?>
 
@@ -48,13 +60,13 @@
 				<td><label for="Max">Max Number: </label></td>
 				<td><input type="number" name="Max" id="Max" value="255"></input></td>
 			</tr>
-			<!-- <tr>
+			<tr>
 				<td><label for="Verbose">Verbose: </label></td>
-				<td><input type="checkbox" id="Verbose"></input></td>
-			</tr> -->
+				<td><input type="checkbox" name="Verbose" id="Verbose"></input></td>
+			</tr>
 		</table>
 		<br>
 		<input type="submit"></submit>
-		<p>Output: <span id="BenchmarkOutput"><?php echo($BenchmarkOutput) ?></span></p>
+		<p>Output: <span id="BenchmarkOutput"><?php echo($BenchmarkOutput); ?></span></p>
 	</form>
 </body>

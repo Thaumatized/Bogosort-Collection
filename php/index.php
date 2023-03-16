@@ -8,9 +8,9 @@
 	function Benchmark()
 	{
 		global $BenchmarkOutput;
-		$BenchmarkOutput = "";
+		$BenchmarkOutput = "<br>";
 		
-		$Verbose = $_GET['Verbose'] == "on";
+		$Verbose = isset($_GET['Verbose']);
 		
 		$Start = floor(microtime(true) * 1000);
 		for($i = 0; $i < $_GET['Count']; $i++)
@@ -27,7 +27,7 @@
 			}
 		}
 		$End = floor(microtime(true) * 1000);
-		$BenchmarkOutput .= (($End - $Start)/1000) ."s";
+		$BenchmarkOutput .= "Total: " .(($End - $Start)/1000) ."s";
 	}
 ?>
 
@@ -50,19 +50,19 @@
 			</tr>
 			<tr>
 				<td><label for="Count">Count: </label></td>
-				<td><input type="number" name="Count" id="Count" value="1"></input></td>
+				<td><input type="number" name="Count" id="Count" value="<?php if(isset($_GET['Count'])) { echo($_GET['Count']); } else {echo("1"); } ?>"></input></td>
 			</tr> 
 			<tr>
 				<td><label for="Len">Length: </label></td>
-				<td><input type="number" name="Len" id="Len" value="8"></input></td>
+				<td><input type="number" name="Len" id="Len" value="<?php if(isset($_GET['Len'])) { echo($_GET['Len']); } else {echo("8"); } ?>"></input></td>
 			</tr>
 			<tr>
 				<td><label for="Max">Max Number: </label></td>
-				<td><input type="number" name="Max" id="Max" value="255"></input></td>
+				<td><input type="number" name="Max" id="Max" value="<?php if(isset($_GET['Max'])) { echo($_GET['Max']); } else {echo("255"); } ?>"></input></td>
 			</tr>
 			<tr>
 				<td><label for="Verbose">Verbose: </label></td>
-				<td><input type="checkbox" name="Verbose" id="Verbose"></input></td>
+				<td><input type="checkbox" name="Verbose" id="Verbose" <?php if(isset($_GET['Count'])) { echo("checked"); } ?>></input></td>
 			</tr>
 		</table>
 		<br>

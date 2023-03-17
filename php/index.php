@@ -11,6 +11,7 @@
 		$BenchmarkOutput = "<br>";
 		
 		$Verbose = isset($_GET['Verbose']);
+		$IndividualTimes = [];
 		
 		$Start = floor(microtime(true) * 1000);
 		for($i = 0; $i < $_GET['Count']; $i++)
@@ -22,10 +23,18 @@
 			bogosort(RandomArray($_GET['Len'], $_GET['Max']));
 			if($Verbose)
 			{
-				$IndividualEnd = floor(microtime(true) * 1000);
-				$BenchmarkOutput .= $i .": " . (($IndividualEnd - $IndividualStart)/1000) ."s<br>";
+				array_push($IndividualTimes, floor((microtime(true) * 1000)- $IndividualStart)/1000);
 			}
 		}
+
+		$SummedUpTime = 0;
+		for($i = 0; $i < count($IndividualTimes); $i++)
+		{
+			$BenchmarkOutput .= $i .": " .$IndividualTimes[$i] ."s<br>";
+			$SummedUpTime += $IndividualTimes[$i];
+		}
+		$BenchmarkOutput .= "Summed up time: " .$SummedUpTime ."s<br>";
+
 		$End = floor(microtime(true) * 1000);
 		$BenchmarkOutput .= "Total: " .(($End - $Start)/1000) ."s";
 	}
@@ -62,7 +71,7 @@
 			</tr>
 			<tr>
 				<td><label for="Verbose">Verbose: </label></td>
-				<td><input type="checkbox" name="Verbose" id="Verbose" <?php if(isset($_GET['Count'])) { echo("checked"); } ?>></input></td>
+				<td><input type="checkbox" name="Verbose" id="Verbose" <?php if(isset($_GET['Verbose'])) { echo("checked"); } ?>></input></td>
 			</tr>
 		</table>
 		<br>

@@ -33,8 +33,11 @@
 			$BenchmarkOutput .= $i .": " .$IndividualTimes[$i] ."s<br>";
 			$SummedUpTime += $IndividualTimes[$i];
 		}
-		$BenchmarkOutput .= "Average time: " .($SummedUpTime / count($IndividualTimes)) ."s<br>";
-		$BenchmarkOutput .= "Summed up time: " .$SummedUpTime ."s<br>";
+		if($Verbose)
+		{
+			$BenchmarkOutput .= "Average time: " .($SummedUpTime / count($IndividualTimes)) ."s<br>";
+			$BenchmarkOutput .= "Summed up time: " .$SummedUpTime ."s<br>";
+		}
 
 		$End = floor(microtime(true) * 1000);
 		$BenchmarkOutput .= "Total: " .(($End - $Start)/1000) ."s";

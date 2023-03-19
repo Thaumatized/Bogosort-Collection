@@ -1,8 +1,19 @@
 <?php	
 	require 'bogosort.php';
 
+	$SortOutput = "1, 2, 3";
 	$BenchmarkOutput = "Run the benchmark first!";
 	
+	if(isset($_GET['Arr']))
+	{
+		$Sorted = bogosort(explode(",", $_GET['Arr']));
+		$SortOutput = $Sorted[0];
+		for($i = 1; $i < count($Sorted); $i++)
+		{
+			$SortOutput .= ", " .$Sorted[$i];
+		}
+	}
+
 	Benchmark();
 
 	function Benchmark()
@@ -48,12 +59,15 @@
 <head>
 </head>
 <body>
-	<!--<h2>Bogosort!</h2>
+	<h2>Bogosort!</h2>
 	<label for="Arr">Comma seperated starting list: </label>
-	<input type="text" id="Arr"></input></br>
-	<button onClick="document.getElementById('Output').innerHTML = Bogosort(ParseInput());">Sort</button>
-	<p>Output: <span id="Output">1, 2, 3</span></p>
-	<br> -->
+	<form action="#" method="GET">
+		<input type="text" name="Arr" id="Arr" value="<?php if(isset($_GET['Arr'])) { echo($_GET['Arr']); } else {echo("3, 2, 1"); } ?>"></input></br>
+		<input type="submit"></submit>
+	</form>
+	<p>Output: <span id="Output"><?php echo($SortOutput); ?></span></p>
+	<br>
+
 	<h2>Benchmark</h2>
 	<form action="#" method="GET">
 		<table>

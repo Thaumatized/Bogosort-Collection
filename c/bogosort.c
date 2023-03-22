@@ -154,8 +154,11 @@ int main(int argc, char *argv[])
 		}
 		average = sum / Count;
 		
-		printf("\naverage time: %6.3f\n", average);
-		printf("\nsummed up time: %6.3f\n", sum);
+		if(Verbose)
+		{
+			printf("\naverage time: %6.3f\n", average);
+			printf("\nsummed up time: %6.3f\n", sum);
+		}
 		printf("\ntotal time: %6.3f\n", (double)(Stop - Start) / CLOCKS_PER_SEC);
 	}
 	

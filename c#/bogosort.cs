@@ -4,10 +4,10 @@ public class Bogosort
 {
 	public static Random rand;
 
-	static public void Main()
+	static public void Main(string[] Args)
 	{
 		rand = new Random();
-		int[] Arr = new int[]{1, 2, 3, 4, 0};
+		int[] Arr = RandomArray(5, 255);
 		bogosort(Arr);
 		
 		Console.Write(Arr[0]);
@@ -15,6 +15,16 @@ public class Bogosort
 		{
 			Console.Write(", " + Arr[i].ToString());
 		}
+	}
+	
+	public static int[] RandomArray(int Len, int Max)
+	{
+		int[] Arr = new int[Len];
+		for(int i = 0; i < Len; i++)
+		{
+			Arr[i] = rand.Next() % Max + 1;
+		}
+		return Arr;
 	}
 	
 	public static void bogosort(int[] Arr)

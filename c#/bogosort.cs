@@ -7,7 +7,58 @@ public class Bogosort
 	static public void Main(string[] Args)
 	{
 		rand = new Random();
-		int[] Arr = RandomArray(5, 255);
+		
+		int[] Arr = new int[0];
+		bool Verbose = false;
+		int Len = 8;
+		int Max = 255;
+		int Count = 1;
+		
+		for(int i = 0; i < Args.Length; i++)
+		{
+			switch(Args[i])
+			{
+				case "-a":
+					int j = i;
+					while(i + j + 1 < Args.Length)
+					{
+						string s = Args[i+j+1];
+						if(s.Substring(s.Length-1) == ",")
+						{
+							s = s.Substring(0, s.Length-1);
+						}
+						
+						if(int.TryParse(s, out int a))
+						{
+							j++;
+						}
+						else
+						{
+							break;
+						}
+					}
+					Arr = new int[j-i];
+					for(j = 0; j < Arr.Length; j++)
+					{						
+						string s = Args[i+j+1];
+						if(s.Substring(s.Length-1) == ",")
+						{
+							s = s.Substring(0, s.Length-1);
+						}
+						
+						Arr[j] = int.Parse(s	);
+					}
+					i += j;
+					break;
+				default:
+					break;
+			}
+		}
+		
+		if(Arr.Length == 0)
+		{
+			Arr = RandomArray(5, 255);
+		}
 		bogosort(Arr);
 		
 		Console.Write(Arr[0]);

@@ -18,6 +18,47 @@ public class Bogosort
 		{
 			switch(Args[i])
 			{
+				case "-l":
+				{
+					if(int.TryParse(Args[i+1], out Len))
+					{
+						i++;
+					}
+					else
+					{
+						Console.WriteLine("Invalid value for -l, \"" + Args[i+1] + "\"");
+					}
+					break;
+				}
+				case "-m":
+				{
+					if(int.TryParse(Args[i+1], out Max))
+					{
+						i++;
+					}
+					else
+					{
+						Console.WriteLine("Invalid value for -m, \"" + Args[i+1] + "\"");
+					}
+					break;
+				}
+				case "-c":
+				{
+					if(int.TryParse(Args[i+1], out Count))
+					{
+						i++;
+					}
+					else
+					{
+						Console.WriteLine("Invalid value for -c, \"" + Args[i+1] + "\"");
+					}
+					break;
+				}
+				case "-v":
+				{
+					Verbose = true;
+					break;
+				}
 				case "-a":
 					int j = i;
 					while(i + j + 1 < Args.Length)
@@ -51,6 +92,7 @@ public class Bogosort
 					i += j;
 					break;
 				default:
+					Console.WriteLine("Unknown argument \"" + Args[i] + "\"");
 					break;
 			}
 		}

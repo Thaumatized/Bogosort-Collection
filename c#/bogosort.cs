@@ -99,7 +99,7 @@ public class Bogosort
 		
 		if(Arr.Length == 0)
 		{
-			Arr = RandomArray(5, 255);
+			Arr = RandomArray(Len, Max);
 		}
 		bogosort(Arr);
 		

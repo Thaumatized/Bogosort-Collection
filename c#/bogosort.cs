@@ -97,16 +97,23 @@ public class Bogosort
 			}
 		}
 		
-		if(Arr.Length == 0)
-		{
-			Arr = RandomArray(Len, Max);
-		}
-		bogosort(Arr);
+		bool ArrSet = Arr.Length != 0;
 		
-		Console.Write(Arr[0]);
-		for(int i = 1; i < Arr.Length; i++)
+		for(int Round = 0; Round < Count; Round++)
 		{
-			Console.Write(", " + Arr[i].ToString());
+			if(!ArrSet)
+			{
+				Arr = RandomArray(Len, Max);
+			}
+			
+			bogosort(Arr);
+		
+			Console.Write(Arr[0]);
+			for(int i = 1; i < Arr.Length; i++)
+			{
+				Console.Write(", " + Arr[i].ToString());
+			}
+			Console.WriteLine();
 		}
 	}
 	

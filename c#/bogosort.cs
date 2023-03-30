@@ -60,10 +60,10 @@ public class Bogosort
 					break;
 				}
 				case "-a":
-					int j = i;
-					while(i + j + 1 < Args.Length)
+					int j = 1;
+					while(i + j < Args.Length)
 					{
-						string s = Args[i+j+1];
+						string s = Args[i+j];
 						if(s.Substring(s.Length-1) == ",")
 						{
 							s = s.Substring(0, s.Length-1);
@@ -78,7 +78,7 @@ public class Bogosort
 							break;
 						}
 					}
-					Arr = new int[j-i];
+					Arr = new int[j-1];
 					for(j = 0; j < Arr.Length; j++)
 					{						
 						string s = Args[i+j+1];
@@ -87,7 +87,7 @@ public class Bogosort
 							s = s.Substring(0, s.Length-1);
 						}
 						
-						Arr[j] = int.Parse(s	);
+						Arr[j] = int.Parse(s);
 					}
 					i += j;
 					break;

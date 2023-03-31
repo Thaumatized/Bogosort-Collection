@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 
 public class Bogosort
 {
@@ -97,23 +98,36 @@ public class Bogosort
 			}
 		}
 		
-		bool ArrSet = Arr.Length != 0;
-		
-		for(int Round = 0; Round < Count; Round++)
+		if(Arr.Length != 0)
 		{
-			if(!ArrSet)
+				
+				bogosort(Arr);
+			
+				Console.Write(Arr[0]);
+				for(int i = 1; i < Arr.Length; i++)
+				{
+					Console.Write(", " + Arr[i].ToString());
+				}
+				Console.WriteLine();
+		}
+		else
+		{
+			Stopwatch timer = new Stopwatch();
+			
+			timer.Start();
+			
+			for(int Round = 0; Round < Count; Round++)
 			{
 				Arr = RandomArray(Len, Max);
+				
+				bogosort(Arr);
 			}
 			
-			bogosort(Arr);
-		
-			Console.Write(Arr[0]);
-			for(int i = 1; i < Arr.Length; i++)
-			{
-				Console.Write(", " + Arr[i].ToString());
-			}
-			Console.WriteLine();
+			timer.Stop();
+			
+			float TotalTime = timer.ElapsedMilliseconds;
+			
+			Console.WriteLine("Total time: " + (TotalTime/1000).ToString());
 		}
 	}
 	

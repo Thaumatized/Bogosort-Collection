@@ -112,20 +112,36 @@ public class Bogosort
 		}
 		else
 		{
-			Stopwatch timer = new Stopwatch();
+			Stopwatch Timer = new Stopwatch();
 			
-			timer.Start();
+			Stopwatch IndividualTimer = new Stopwatch();
+			float[] IndividualTimes = new float[Count];
+			
+			Timer.Start();
 			
 			for(int Round = 0; Round < Count; Round++)
 			{
+				if(Verbose)
+				{
+					IndividualTimer.Start();
+				}
+				
 				Arr = RandomArray(Len, Max);
 				
 				bogosort(Arr);
+				
+				if(Verbose)
+				{
+					IndividualTimer.Stop();
+					IndividualTimes[Round] = ((float)IndividualTimer.ElapsedMilliseconds)/1000;
+					IndividualTimer.Reset();
+					Console.WriteLine(Round.ToString() + ": " + IndividualTimes[Round].ToString("0.000"));
+				}
 			}
 			
-			timer.Stop();
+			Timer.Stop();
 			
-			float TotalTime = timer.ElapsedMilliseconds;
+			float TotalTime = Timer.ElapsedMilliseconds;
 			
 			Console.WriteLine("Total time: " + (TotalTime/1000).ToString());
 		}

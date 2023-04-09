@@ -141,9 +141,18 @@ public class Bogosort
 			
 			Timer.Stop();
 			
+			float SummedUpTime = 0;
+			for(int i = 0; i < Count; i++)
+			{
+				SummedUpTime += IndividualTimes[i];
+			}
+			float AverageTime = (SummedUpTime/Count);
+			
 			float TotalTime = Timer.ElapsedMilliseconds;
 			
-			Console.WriteLine("Total time: " + (TotalTime/1000).ToString());
+			Console.WriteLine("Average time: " + (AverageTime).ToString("0.000"));
+			Console.WriteLine("Summed up time: " + (SummedUpTime).ToString("0.000"));
+			Console.WriteLine("Total time: " + (TotalTime/1000).ToString("0.000"));
 		}
 	}
 	

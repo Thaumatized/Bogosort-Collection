@@ -18,4 +18,3 @@ Currently implemented:
 - C
 - PHP
 - JavaScript
-	- No command line, can use included html

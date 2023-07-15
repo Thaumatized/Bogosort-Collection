@@ -16,7 +16,5 @@ Each bogosort implementation must be able to run with the following command line
 Currently implemented:  
 - Python  
 - C
-- JavaScript
-	- No command line, can use included html
 - PHP
-	- No command line, can use included html
+- JavaScript

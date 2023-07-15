@@ -116,14 +116,14 @@
 			}
 		}
 	
-		$SummedUpTime = 0;
-		for($i = 0; $i < count($IndividualTimes); $i++)
-		{
-			echo $i .": " .$IndividualTimes[$i] ."s\n";
-			$SummedUpTime += $IndividualTimes[$i];
-		}
 		if($Verbose)
 		{
+			$SummedUpTime = 0;
+			for($i = 0; $i < count($IndividualTimes); $i++)
+			{
+				echo $i .": " .$IndividualTimes[$i] ."s\n";
+				$SummedUpTime += $IndividualTimes[$i];
+			}
 			echo "Average time: " .($SummedUpTime / count($IndividualTimes)) ."s\n";
 			echo "Summed up time: " .$SummedUpTime ."s\n";
 		}

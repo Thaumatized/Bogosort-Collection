@@ -113,6 +113,7 @@
 			if($Verbose)
 			{
 				array_push($IndividualTimes, floor((microtime(true) * 1000)- $IndividualStart)/1000);
+				echo $i .": " .$IndividualTimes[$i] ."s\n";
 			}
 		}
 	
@@ -121,7 +122,6 @@
 			$SummedUpTime = 0;
 			for($i = 0; $i < count($IndividualTimes); $i++)
 			{
-				echo $i .": " .$IndividualTimes[$i] ."s\n";
 				$SummedUpTime += $IndividualTimes[$i];
 			}
 			echo "Average time: " .($SummedUpTime / count($IndividualTimes)) ."s\n";

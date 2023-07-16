@@ -111,6 +111,7 @@ else
 		if(Verbose)
 		{
 			IndividualTimes.push((new Date().getTime() - IndividualStart) / 1000);
+			console.log( i + ": " + IndividualTimes[i] + "s");
 		}
 	}
 
@@ -119,7 +120,6 @@ else
 		let SummedUpTime = 0;
 		for(i = 0; i < IndividualTimes.length; i++)
 		{
-			console.log( i + ": " + IndividualTimes[i] + "s");
 			SummedUpTime += IndividualTimes[i];
 		}
 		console.log("Average time: " + (SummedUpTime / IndividualTimes.length) + "s");

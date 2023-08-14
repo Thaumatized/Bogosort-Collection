@@ -18,3 +18,5 @@ Currently implemented:
 - C
 - PHP
 - JavaScript
+- C#
+- Java

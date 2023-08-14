@@ -128,12 +128,12 @@ public class Bogosort
 				
 				if(Verbose)
 				{
-					IndividualTimes[Round] = ((float)(System.nanoTime() - IndividualStartTime))/1000000;
+					IndividualTimes[Round] = ((float)(System.nanoTime() - IndividualStartTime))/1000000000;
 					System.out.printf("%d: %.3f\n", Round, IndividualTimes[Round]);
 				}
 			}
 			
-			long TotalTime = System.nanoTime();
+			long TotalTime = System.nanoTime() - StartTime;
 			
 			if(Verbose)
 			{
@@ -148,7 +148,7 @@ public class Bogosort
 				System.out.printf("Summed up time: %.3f\n", SummedUpTime);
 			}
 			
-			System.out.printf("Total time: %.3f\n", (float)TotalTime/1000000);
+			System.out.printf("Total time: %.3f\n", (float)TotalTime/1000000000);
 		}
 	}
 	

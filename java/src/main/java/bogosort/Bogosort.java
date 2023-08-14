@@ -184,7 +184,7 @@ public class Bogosort
 	{
 		for(int i = 0; i < Arr.length; i++)
 		{
-			int OtherIndex = Math.abs(rand.nextInt()) % Arr.length;
+			int OtherIndex = Math.abs(rand.nextInt() % Arr.length);
 			int Holder = Arr[i];
 			Arr[i] = Arr[OtherIndex];
 			Arr[OtherIndex] = Holder;

@@ -69,7 +69,7 @@ public class Bogosort
 						try
 						{
 							Integer.parseInt(s);
-							i++;
+							j++;
 						}
 						catch(Error e)
 						{

@@ -61,15 +61,14 @@ public class Bogosort
 					while(i + j < Args.length)
 					{
 						String s = Args[i+j];
-						if(s.substring(s.length()-1) == ",")
+						if(s.endsWith(","))
 						{
 							s = s.substring(0, s.length()-1);
 						}
 
-
 						try
 						{
-							Integer.parseInt(Args[i+1]);
+							Integer.parseInt(s);
 							i++;
 						}
 						catch(Error e)
@@ -81,7 +80,7 @@ public class Bogosort
 					for(j = 0; j < Arr.length; j++)
 					{						
 						String s = Args[i+j+1];
-						if(s.substring(s.length()-1) == ",")
+						if(s.endsWith(","))
 						{
 							s = s.substring(0, s.length()-1);
 						}
@@ -98,7 +97,6 @@ public class Bogosort
 		
 		if(Arr.length != 0)
 		{
-				
 				bogosort(Arr);
 			
 				System.out.print(Arr[0]);

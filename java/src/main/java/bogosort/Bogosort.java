@@ -129,7 +129,7 @@ public class Bogosort
 				if(Verbose)
 				{
 					IndividualTimes[Round] = ((float)(System.nanoTime() - IndividualStartTime))/1000000;
-					System.out.printf("%i: %.3", Round, IndividualTimes[Round]);
+					System.out.printf("%d: %.3f\n", Round, IndividualTimes[Round]);
 				}
 			}
 			

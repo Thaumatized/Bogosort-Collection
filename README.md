@@ -13,10 +13,11 @@ Each bogosort implementation must be able to run with the following command line
 	-v , verbose, print individual times as well and some additional stats.  
 	-a values..., values used to specify an array to sort. overrides all others.  
 
-Currently implemented:  
-- Python  
+Currently implemented:
+- Python
 - C
 - PHP
 - JavaScript
+- TypeScript
 - C#
 - Java

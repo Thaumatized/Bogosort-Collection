@@ -4,4 +4,4 @@ sudo apt install nodejs
 
 and to run then:
 
-node bogosort.php
+node bogosort.js

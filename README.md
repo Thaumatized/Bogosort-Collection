@@ -21,3 +21,4 @@ Currently implemented:
 - TypeScript
 - C#
 - Java
+- Bash (current implementation is partial and doesn't accept input)

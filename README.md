@@ -22,3 +22,4 @@ Currently implemented:
 - C#
 - Java
 - Bash
+- Rust

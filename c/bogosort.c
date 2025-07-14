@@ -6,52 +6,52 @@
 
 void bogosort();
 void shuffle();
-int issorted();
-void RandomArray();
-void PrintArray();
+int isSorted();
+void randomArray();
+void printArray();
 
-void bogosort(int* Arr, int Len)
+void bogosort(int* arr, int len)
 {
-	while(issorted(Arr, Len) == 0)
+	while(isSorted(arr, len) == 0)
 	{
-		shuffle(Arr, Len);
+		shuffle(arr, len);
 	}
 }
 
-void shuffle(int* Arr, int Len)
+void shuffle(int* arr, int len)
 {
-	for(int i = 0; i < Len; i++)
+	for(int i = 0; i < len; i++)
 	{
-		int OtherIndex = rand() % Len;
-		int Holder = Arr[OtherIndex];
-		Arr[OtherIndex] = Arr[i];
-		Arr[i] = Holder;
+		int otherIndex = rand() % len;
+		int holder = arr[otherIndex];
+		arr[otherIndex] = arr[i];
+		arr[i] = holder;
 	}
 }
 
-int issorted(int* Arr, int Len)
+int isSorted(int* arr, int len)
 {
-	for(int i = 0; i < Len-1; i++)
+	for(int i = 0; i < len-1; i++)
 	{
-		if(Arr[i] > Arr[i+1]) return 0;
+		if(arr[i] > arr[i+1]) return 0;
 	}
 	return 1;
 }
 
-void RandomArray(int* Arr, int Len, int Max)
+void randomArray(int* arr, int len, int max)
 {
-	for (int i = 0; i < Len; i++)
+	for (int i = 0; i < len; i++)
 	{
-		Arr[i] = rand() % (Max + 1);
+		arr[i] = rand() % (max + 1);
 	}
 }
 
-void PrintArray(int* Arr, int Len)
+void printArray(int* arr, int len)
 {
-	for(int i = 0; i < Len; i++)
+	for(int i = 0; i < len; i++)
 	{
 		if(i) printf(", ");
-		printf("%i", Arr[i]);
+		printf("%i", arr[i]);
 	}
 }
 
@@ -61,37 +61,37 @@ int main(int argc, char *argv[])
 	time_t t = time(NULL);
 	srand(t);
 	
-	int Len = 8;
-	int Max = 255;
-	int Count = 1;
-	bool Verbose = false;
-	int ArrArgIndex = 0;
+	int len = 8;
+	int max = 255;
+	int count = 1;
+	bool verbose = false;
+	int arrArgIndex = 0;
 	
-	int* Arr;
+	int* arr;
 
 	for (int i = 1; i < argc; i++)
 	{
 		if (!strcmp(argv[i], "-l"))
 		{
-			if(!ArrArgIndex)
+			if(!arrArgIndex)
 			{
-				Len = atoi(argv[i+1]);
+				len = atoi(argv[i+1]);
 			}
 			i++;
 		}
 		if (!strcmp(argv[i], "-m"))
 		{
-			Max = atoi(argv[i+1]);
+			max = atoi(argv[i+1]);
 			i++;
 		}
 		if (!strcmp(argv[i], "-c"))
 		{
-			Count = atoi(argv[i+1]);
+			count = atoi(argv[i+1]);
 			i++;
 		}
 		if (!strcmp(argv[i], "-v"))
 		{
-			Verbose = true;
+			verbose = true;
 		}
 		if (!strcmp(argv[i], "-a"))
 		{
@@ -101,66 +101,66 @@ int main(int argc, char *argv[])
 			{
 				i2++;
 			}
-			Len = i2 - i - 1;
-			if(Len > 0) ArrArgIndex = i + 1;
+			len = i2 - i - 1;
+			if(len > 0) arrArgIndex = i + 1;
 			i = i2 - 1;
 		}
 	}
 
-	int temparr[Len];
-	Arr = temparr;
-	float IndividualTimes[Count];
-	if(ArrArgIndex)
+	int temparr[len];
+	arr = temparr;
+	float individualTimes[count];
+	if(arrArgIndex)
 	{
-		for (int i = 0; i < Len; i++)
+		for (int i = 0; i < len; i++)
 		{
-			Arr[i] = atoi(argv[ArrArgIndex+i]);
+			arr[i] = atoi(argv[arrArgIndex+i]);
 		}
 
-		bogosort(Arr, Len);
+		bogosort(arr, len);
 		
-		PrintArray(Arr, Len);
+		printArray(arr, len);
 	}
 	else
 	{
-		clock_t Start, Stop;
+		clock_t overallStartClock, overallStopClock;
 		
-		Start = clock();
+		overallStartClock = clock();
 		
-		for(int i = 0; i < Count; i++)
+		for(int i = 0; i < count; i++)
 		{
-			clock_t Start2, Stop2;
-			Start2 = clock();
+			clock_t individualStartClock, individualStopClock;
+			individualStartClock = clock();
 			
-			RandomArray(Arr, Len, Max);
+			randomArray(arr, len, max);
 			
-			bogosort(Arr, Len);
+			bogosort(arr, len);
 			
 			
-			if(Verbose)
+			if(verbose)
 			{
-				Stop2 = clock();
-				printf("\n%i: %6.3f", i, (double)(Stop2 - Start2) / CLOCKS_PER_SEC);
-				IndividualTimes[i] = (double)(Stop2 - Start2) / CLOCKS_PER_SEC;
+				individualStopClock = clock();
+				printf("\n%i: %6.3f", i, (double)(individualStopClock - individualStartClock) / CLOCKS_PER_SEC);
+				individualTimes[i] = (double)(individualStopClock - individualStartClock) / CLOCKS_PER_SEC;
 			}
 		}
 		
-		Stop = clock();
+		overallStopClock = clock();
 		
 		float average, sum = 0;
 		
-		for(int i = 0; i < Count; i++)
+		for(int i = 0; i < count; i++)
 		{
-			sum += IndividualTimes[i];
+			sum += individualTimes[i];
 		}
-		average = sum / Count;
+		average = sum / count;
 		
-		if(Verbose)
+		if(verbose)
 		{
 			printf("\naverage time: %6.3f\n", average);
 			printf("\nsummed up time: %6.3f\n", sum);
 		}
-		printf("\ntotal time: %6.3f\n", (double)(Stop - Start) / CLOCKS_PER_SEC);
+		printf("\ntotal time: %6.3f\n", (double)(overallStopClock - overallStartClock) / CLOCKS_PER_SEC);
 	}
 	
 	return 0;

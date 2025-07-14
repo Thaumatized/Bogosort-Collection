@@ -103,6 +103,7 @@ int main(int argc, char *argv[])
 			}
 			Len = i2 - i - 1;
 			if(Len > 0) ArrArgIndex = i + 1;
+			i = i2 - 1;
 		}
 	}
 

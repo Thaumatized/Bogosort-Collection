@@ -2,3 +2,4 @@ bogosort
 !bogosort/
 bogosort.exe
 target/
+.vscode/
